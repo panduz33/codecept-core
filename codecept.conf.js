@@ -13,7 +13,7 @@ exports.config = {
   helpers: {
     WebDriver: {
       url: process.env.BASE_URL,
-      browser: 'chrome',
+      browser: 'firefox',
       smartWait: 5000,
       restart: true,
       windowSize: "maximize",
@@ -74,6 +74,7 @@ exports.config = {
   include: {
     I: './steps_file.js',
     loginPage: "./pages/LoginPage.js",
+    mainPage: "./pages/MainPage.js",
   },
   name: 'ui-automation',
   bootstrap: null,

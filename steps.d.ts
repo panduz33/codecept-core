@@ -1,13 +1,13 @@
 /// <reference types='codeceptjs' />
 type steps_file = typeof import('./steps_file.js');
-
-
+type loginPage = typeof import('./pages/LoginPage.js');
+type mainPage = typeof import('./pages/MainPage.js');
 type ExpectAction = import('./helpers/ExpectAction.js');
 type CustomAction = import('./helpers/CustomAction.js');
 type ApiSwitcher = import('./helpers/ApiSwitcher.js');
 
 declare namespace CodeceptJS {
-  interface SupportObject { I: I, current: any }
+  interface SupportObject { I: I, current: any, loginPage: loginPage, mainPage: mainPage }
   interface Methods extends WebDriver, ExpectAction, CustomAction, ApiSwitcher {}
   interface I extends ReturnType<steps_file>, WithTranslation<Methods> {}
   namespace Translation {
