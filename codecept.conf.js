@@ -37,9 +37,9 @@ exports.config = {
     CustomAction: {
       require: './helpers/CustomAction.js'
     },
-    CommonHelper: {
-      require: './helpers/common.js'
-    },
+    // CommonHelper: {
+    //   require: './helpers/common.js'
+    // },
     // REST : {
     //   endpoint: process.env.BASE_URL,
     //   timeout: 10000,
