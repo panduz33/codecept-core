@@ -26,10 +26,20 @@ exports.config = {
         chromeOptions: {
           args: [
             "--disable-gpu",
-          ]
+            "--disable-notifications",
+            "--disable-web-security",
+            "--disable-infobars",
+            "--disable-popup-blocking"
+          ],
+          prefs: {
+            "credentials_enable_service": false,
+            "profile.password_manager_enabled": false,
+            "profile.password_manager_allow_show_password_bubble": false,
+            "profile.password_manager_leak_detection_enabled": false
+          }
         }
       },
-      waitForTimeout: 10000 // <-- Add or update this line (10 seconds)
+      waitForTimeout: 10000
     },
     ExpectAction: {
       require: './helpers/ExpectAction.js',
@@ -63,6 +73,7 @@ exports.config = {
   },
   include: {
     I: './steps_file.js',
+    loginPage: "./pages/LoginPage.js",
   },
   name: 'ui-automation',
   bootstrap: null,
