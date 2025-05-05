@@ -1,0 +1,32 @@
+{
+    "name": "codeceptjs-tests",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "codeceptjs": "codeceptjs run --steps",
+        "codeceptjs:headless": "HEADLESS=true codeceptjs run --steps",
+        "codeceptjs:ui": "codecept-ui --app",
+        "codeceptjs:demo": "codeceptjs run --steps -c node_modules/@codeceptjs/examples",
+        "codeceptjs:demo:headless": "HEADLESS=true codeceptjs run --steps -c node_modules/@codeceptjs/examples",
+        "codeceptjs:demo:ui": "codecept-ui --app  -c node_modules/@codeceptjs/examples"
+    },
+    "devDependencies": {
+        "@codeceptjs/configure": "^1.0.3",
+        "@codeceptjs/examples": "^1.2.4",
+        "@codeceptjs/ui": "^1.2.3",
+        "codeceptjs": "^3.7.3",
+        "playwright": "^1.51.1",
+        "webdriverio": "^8.44.1"
+    },
+    "dependencies": {
+        "chai": "^5.2.0",
+        "chromedriver": "^134.0.5",
+        "csv-writer": "^1.6.0",
+        "dotenv": "^16.4.7",
+        "joi": "^17.13.3",
+        "mochawesome": "^7.1.3",
+        "moment": "^2.30.1",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.8.2"
+    }
+}
