@@ -7,13 +7,13 @@ module.exports = {
   // insert your locators and methods here
   info : {
     appLogo : 'div[class="app_logo"]',
-    inventoryItemName : 'div[data-test="inventory-item-name"]',
-    inventoryItemPrice : 'div[class="inventory_item_price"]',
-    title : 'span[data-test="title"]'
+    inventoryItemName : '$inventory-item-name',
+    inventoryItemPrice : '$inventory_item_price',
+    title : '$title'
   },
 
   buttons : {
-    shoppingCart : 'a[data-test="shopping-cart-link"]',
+    shoppingCart : '$shopping-cart-link',
     menu : '//button[text()="$command"]',
     addToCartSpecificItem : '//div[text()="$itemName"]/../../..//button'
   },
@@ -30,7 +30,7 @@ module.exports = {
     resetAppState : 'Reset App State',
   },
 
-  filter : 'select[data-test="product-sort-container"]',
+  filter : '$product-sort-container',
 
   select : {
     sortByAscendingAlphabetical : 'Name (A to Z)',
@@ -81,8 +81,14 @@ module.exports = {
   },
 
   async addItemToCart(itemName){
+    //checking button text before click
+    await I.seeTextEquals('Add to cart', this.buttons.addToCartSpecificItem.replace('$itemName', itemName));
+
     await I.say(`Adding item: ${itemName}`);
     await I.click(this.buttons.addToCartSpecificItem.replace('$itemName', itemName));
+
+    //checking button text after click
+    await I.seeTextEquals('Remove', this.buttons.addToCartSpecificItem.replace('$itemName', itemName));
   },
 
   async countCartItems(){

@@ -7,9 +7,9 @@ module.exports = {
   // insert your locators and methods here
   info : {
     yourCart : 'Your Cart',
-    productQuantity : 'div[data-test="item-quantity"]',
-    productName : 'div[data-test="inventory-item-name"]',
-    productPrice : 'div[data-test="inventory-item-price"]',
+    productQuantity : '$item-quantity]',
+    productName : '$inventory-item-name]',
+    productPrice : '$inventory-item-price]',
   },
 
   buttons : {

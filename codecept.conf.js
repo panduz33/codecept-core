@@ -91,5 +91,11 @@ exports.config = {
       json: true
     },
     reporter: 'mochawesome'
+  },
+  plugins : {
+    customLocator: {
+      enabled: true,
+      attribute : 'data-test'
+    },
   }
 }

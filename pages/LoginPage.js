@@ -10,8 +10,8 @@ module.exports = {
 
   info : {
     usernameList : '#login_credentials',
-    passwordList : 'div[data-test="login-password"]',
-    errorMessage : 'h3[data-test="error"]'
+    passwordList : '$login-password',
+    errorMessage : '$error'
   },
 
   buttons : {
