@@ -7,7 +7,9 @@ module.exports = {
   // insert your locators and methods here
   info : {
     appLogo : 'div[class="app_logo"]',
-    inventoryItemName : 'div[data-test="inventory-item-name"]'
+    inventoryItemName : 'div[data-test="inventory-item-name"]',
+    inventoryItemPrice : 'div[class="inventory_item_price"]',
+    title : 'span[data-test="title"]'
   },
 
   buttons : {
@@ -28,9 +30,19 @@ module.exports = {
     resetAppState : 'Reset App State',
   },
 
+  filter : 'select[data-test="product-sort-container"]',
+
+  select : {
+    sortByAscendingAlphabetical : 'Name (A to Z)',
+    sortByDescendingAlphabetical : 'Name (Z to A)',
+    sortByPriceLowToHigh : 'Price (low to high)',
+    sortByPriceHighToLow : 'Price (high to low)'
+  },
+
   // methods
   async waitForMainPage(){
     await I.waitForElement(this.info.appLogo, WAIT_TIME.MEDIUM);
+    await I.seeTextEquals('Products', this.info.title);
   },
 
   async openMenu(){
@@ -55,15 +67,48 @@ module.exports = {
     await I.say('Menu has closed');
   },
 
-  async getAllItems(){
+  async openShoppingCart(){
+    await I.click(this.buttons.shoppingCart);
+  },
+
+  async getAllItemsName(){
     return await I.grabTextFromAll(this.info.inventoryItemName);
   },
 
+  async getAllItemsPrice(){
+    const allPrices = await I.grabTextFromAll(this.info.inventoryItemPrice);
+    return allPrices.map(price => price.replace('$','')); //remove $ sign from price and retur
+  },
+
   async addItemToCart(itemName){
+    await I.say(`Adding item: ${itemName}`);
     await I.click(this.buttons.addToCartSpecificItem.replace('$itemName', itemName));
   },
 
   async countCartItems(){
     return await I.grabTextFrom(this.indicators.cartBadgeCounter);
   },
+
+  async assertAllMenuIsExist(){
+    for(const menu in this.menus){
+      await I.say('Checking menu : ' + this.menus[menu]);
+      await I.see(this.menus[menu]);
+    }
+  },
+
+  async sortItemByNameAscending(){
+    await I.selectOption(this.filter, this.select.sortByAscendingAlphabetical);
+  },
+
+  async sortItemByNameDescending(){
+    await I.selectOption(this.filter, this.select.sortByDescendingAlphabetical);
+  },
+
+  async sortItemByPriceLowToHigh(){
+    await I.selectOption(this.filter, this.select.sortByPriceLowToHigh);
+  },
+
+  async sortItemByPriceHighToLow(){
+    await I.selectOption(this.filter, this.select.sortByPriceHighToLow);
+  }
 }

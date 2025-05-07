@@ -10,7 +10,8 @@ module.exports = {
 
   info : {
     usernameList : '#login_credentials',
-    passwordList : 'div[data-test="login-password"]'
+    passwordList : 'div[data-test="login-password"]',
+    errorMessage : 'h3[data-test="error"]'
   },
 
   buttons : {
@@ -29,7 +30,7 @@ module.exports = {
     return (userList.split('\n'))[userOption];
   },
 
-  async getPasswordList() {
+  async getPassword() {
     const passwordList = await I.grabTextFrom(this.info.passwordList);
     return passwordList.split('\n')[1];
   },
@@ -39,4 +40,8 @@ module.exports = {
     I.fillField(this.fields.password, password);
     I.click(this.buttons.login);
   },
+
+  async getErrorMessage(){
+    return await I.grabTextFrom(this.info.errorMessage);
+  }
 }

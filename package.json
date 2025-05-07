@@ -13,7 +13,7 @@
     "devDependencies": {
         "@codeceptjs/configure": "^1.0.3",
         "@codeceptjs/examples": "^1.2.4",
-        "@codeceptjs/ui": "^1.2.3",
+        "@codeceptjs/ui": "^1.2.4",
         "codeceptjs": "^3.7.3",
         "playwright": "^1.51.1",
         "webdriverio": "^8.44.1"
@@ -25,6 +25,8 @@
         "dotenv": "^16.4.7",
         "joi": "^17.13.3",
         "mochawesome": "^7.1.3",
+        "mochawesome-merge": "^5.0.0",
+        "mochawesome-report-generator": "^6.2.0",
         "moment": "^2.30.1",
         "ts-node": "^10.9.2",
         "typescript": "^5.8.2"

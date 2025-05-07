@@ -75,13 +75,21 @@ exports.config = {
     I: './steps_file.js',
     loginPage: "./pages/LoginPage.js",
     mainPage: "./pages/MainPage.js",
+    cartPage: "./pages/CartPage.js",
+    checkOutPage: "./pages/CheckOutPage.js",
+    overViewPage: "./pages/OverViewPage.js",
   },
   name: 'ui-automation',
   bootstrap: null,
   mocha: {
     reporterOptions: {
-      reportDir: './output'
+      reportDir: 'output',
+      reportFilename: 'report',
+      quiet: true,
+      overwrite: false,
+      html: true,
+      json: true
     },
-    bail: false
+    reporter: 'mochawesome'
   }
 }
